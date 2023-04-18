@@ -1,0 +1,12 @@
+galaxy_info:
+  role_name: haproxy_rke2
+  namespace: rnodec
+  author: RnodeC
+  description: setup a haproxy as an ha rke2 frontend
+  license: "license (BSD, MIT)"
+
+  min_ansible_version: '2.11'
+  galaxy_tags: 
+  - linux
+
+dependencies: []

@@ -1,0 +1,16 @@
+---
+- name: Converge
+  hosts: all
+
+  vars: 
+    haproxy_rke2_enabled: true 
+    haproxy_rke2_servers:
+    - name: server1
+      address: 10.0.0.1
+    - name: server2
+      address: 10.0.0.2
+    - name: server3
+      address: 10.0.0.3
+
+  roles:
+  - RnodeC.haproxy_rke2

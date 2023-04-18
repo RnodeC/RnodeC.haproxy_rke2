@@ -1,0 +1,23 @@
+global
+    log /dev/log local0
+    log /dev/log local1 notice
+    daemon
+
+defaults
+    log global
+    mode tcp
+    timeout connect 5s
+    timeout client 30s
+    timeout server 30s
+
+frontend kubernetes
+    bind *:{{ haproxy_rke2_api_listen_port }}
+    mode tcp
+    default_backend kubernetes
+
+backend kubernetes
+    balance roundrobin
+{% for node in haproxy_rke2_servers %}
+    server {{ node.name }} {{ node.address }}:{{ haproxy_rke2_api_target_port }} check
+{% endfor %}
+

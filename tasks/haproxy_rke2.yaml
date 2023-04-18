@@ -1,0 +1,39 @@
+---
+- name: Fail if haproxy_rke2_servers is not defined
+  ansible.builtin.fail:
+    msg: "The variable 'haproxy_rke2_servers' is not defined"
+  when: haproxy_rke2_servers is not defined
+
+- block:
+  - name: Update package cache (Debian)
+    ansible.builtin.apt:
+      update_cache: true
+    when: ansible_os_family == 'Debian'
+
+  - name: Update package cache (RedHat)
+    ansible.builtin.yum:
+      name: '*'
+      state: latest
+      update_cache: true
+    when: ansible_os_family == 'RedHat'
+
+  - name: Install haproxy
+    ansible.builtin.package:
+      name: haproxy
+      state: present
+
+  - name: Configure haproxy
+    ansible.builtin.template:
+      src: haproxy.cfg.j2
+      dest: /etc/haproxy/haproxy.cfg
+      owner: root
+      group: root
+      mode: 0644
+    notify: restart haproxy
+
+  - name: Enable and start haproxy service
+    ansible.builtin.systemd:
+      name: haproxy
+      state: started
+      enabled: true
+  become: true

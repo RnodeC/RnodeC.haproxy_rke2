@@ -1,4 +1,4 @@
 ---
-- name: Haproxy_rke2 
+- name: Install haproxy_rke2 
   include_tasks: haproxy_rke2.yaml 
   when: haproxy_rke2_enabled

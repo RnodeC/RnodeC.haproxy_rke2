@@ -5,11 +5,11 @@ on:
       - opened
       - synchronize
   schedule:
-    - cron: '30 5 * * 0'
+    - cron: '20 5 * * 0'
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         MOLECULE_DISTRO:
@@ -21,8 +21,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-        with:
-          path: "${{ github.repository }}"
 
       - name: molecule
         uses: robertdebock/molecule-action@5.0.1

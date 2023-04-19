@@ -11,7 +11,7 @@ Three linux servers.
 Role Variables
 --------------
 
-If `haproxy_rke2_enabled` is set to `true` (default is `false`), these variables must be provided:
+If `haproxy_rke2_enabled` is `true` (default is `false`), these variables must be provided:
 * `haproxy_rke2_servers`: a list of server names and ips, for example:
 ```bash
 haproxy_rke2_servers:
@@ -33,6 +33,8 @@ None
 Example Playbook
 ----------------
 
+```bash
+---
 - hosts: servers
 
   vars:
@@ -47,6 +49,7 @@ Example Playbook
 
   roles:
   - RnodeC.haproxy_rke2
+---
 
 Author Information
 ------------------

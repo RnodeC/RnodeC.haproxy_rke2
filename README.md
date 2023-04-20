@@ -49,7 +49,7 @@ Example Playbook
 
   roles:
   - RnodeC.haproxy_rke2
----
+```
 
 Author Information
 ------------------

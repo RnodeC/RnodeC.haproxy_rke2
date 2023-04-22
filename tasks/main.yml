@@ -1,4 +1,8 @@
 ---
 - name: Install haproxy_rke2 
-  include_tasks: haproxy_rke2.yaml 
-  when: haproxy_rke2_enabled
+  include_tasks: install.yaml 
+  when: haproxy_rke2_action in ['install', 'upgrade']
+
+- name: Remove haproxy_rke2
+  include_tasks: teardown.yaml
+  when: haproxy_rke2_action == 'teardown'

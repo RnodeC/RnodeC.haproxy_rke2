@@ -1,4 +1,4 @@
 ---
-haproxy_rke2_enabled: false
+haproxy_rke2_action: install
 haproxy_rke2_api_listen_port: 6444
 haproxy_rke2_api_target_port: 6443

@@ -1,0 +1,12 @@
+---
+- block:
+  - name: Remove haproxy package
+    ansible.builtin.package:
+      name: haproxy
+      state: absent
+
+  - name: Remove haproxy.cfg file
+    ansible.builtin.file:
+      name: /etc/haproxy/haproxy.cfg
+      state: absent
+  become: true

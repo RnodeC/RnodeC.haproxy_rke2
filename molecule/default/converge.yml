@@ -3,7 +3,6 @@
   hosts: all
 
   vars: 
-    haproxy_rke2_enabled: true 
     haproxy_rke2_servers:
     - name: server1
       address: 10.0.0.1

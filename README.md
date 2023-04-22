@@ -11,7 +11,7 @@ Three linux servers.
 Role Variables
 --------------
 
-If `haproxy_rke2_enabled` is `true` (default is `false`), these variables must be provided:
+required:
 * `haproxy_rke2_servers`: a list of server names and ips, for example:
 ```bash
 haproxy_rke2_servers:
@@ -38,7 +38,6 @@ Example Playbook
 - hosts: servers
 
   vars:
-    haproxy_rke2_enabled: true 
     haproxy_rke2_servers:
     - name: server1
       address: 10.0.0.1

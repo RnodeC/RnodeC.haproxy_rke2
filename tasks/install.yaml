@@ -6,7 +6,7 @@
 
 - debug: 
     msg: "haproxy_rke2_servers = {{ haproxy_rke2_servers }}"
-  when: haproxy_rke2_debug | default(false) | bool
+  when: debug | default(false) | bool
 
 - block:
   - name: Update package cache (Debian)
